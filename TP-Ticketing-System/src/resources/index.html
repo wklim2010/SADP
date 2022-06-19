@@ -30,46 +30,46 @@
         <h1>Welcome to SAD Park!</h1><br>
         <h3>Please order your tickets here: </h3><br>
         <div class="container">
-            <form id="order_form" name="order_form">
+            <form id="order_form" name="order_form" action="checkout.html" method="get">
                 <div class="form-group row"><label for="name">Name: &nbsp;</label>
                     <input class="col-sm-4" type="text" id="name" name="name" placeholder="Name">
                 </div><br>
                 <div class="form-group row"><label for="date">Ticket Date: &nbsp;</label>
                     <input class=" col-sm-4" type="date" id="date" name="date">
                 </div><br>
-
                 <div class="form-group row">
-                    <label for="adult_num">Adults: &nbsp;</label>
+                    <label for="adult_num">Adults (RM100): &nbsp;</label>
                     <button class="quantity-left-minus btn btn-secondary" type="button" width="16" height="16"
                         onclick="minus(this)">-</button>
                     <div class="quantity-input">
-                        <input type="text" id="quantity" class="form-control adult" value="1" min="1" max="100"
+                        <input type="text" id="quantity" name="adult" class="form-control adult" value="1" min="1" max="100"
                             style="max-width:50px">
                     </div>
                     <button class="quantity-right-plus btn btn-secondary" type="button" width="16" height="16"
                         onclick="plus(this)">+</button>
                 </div><br>
-                <div class="form-group row"><label for="child_num">Children: &nbsp;</label>
+                <div class="form-group row"><label for="child_num">Children (RM70): &nbsp;</label>
                     <button class="quantity-left-minus btn btn-secondary" type="button" width="16" height="16"
                         onclick="minus(this)">-</button>
                     <div class="quantity-input">
-                        <input type="text" id="quantity" class="form-control child" value="1" min="1" max="100"
+                        <input type="text" id="quantity" name="child" class="form-control child" value="1" min="1" max="100"
                             style="max-width:50px">
                     </div>
                     <button class="quantity-right-plus btn btn-secondary" type="button" width="16" height="16"
                         onclick="plus(this)">+</button>
                 </div><br>
-                <div class="form-group row"><label for="sc_num">Senior citizens/OKU: &nbsp;</label>
+                <div class="form-group row"><label for="sc_num">Senior citizens/OKU (RM50): &nbsp;</label>
                     <button class="quantity-left-minus btn btn-secondary" type="button" width="16" height="16"
                         onclick="minus(this)">-</button>
                     <div class="quantity-input">
-                        <input type="text" id="quantity" class="form-control sc" value="1" min="1" max="100"
+                        <input type="text" id="quantity" name="sc" class="form-control sc" value="1" min="1" max="100"
                             style="max-width:50px">
                     </div>
                     <button class="quantity-right-plus btn btn-secondary" type="button" width="16" height="16"
-                        onclick="plus(this)">+</button>
+                        onclick="plus(this)">+</button> 
                 </div><br>
-                <button type="button" id="submit" name="submit" class="btn btn-primary">Submit</button>
+                <!-- <button type="button" id="submit" name="submit" class="btn btn-primary">Submit</button> -->
+                <input type="submit" class="btn btn-primary" id="submit" name="submit"/>
             </form>
         </div>
         <script>

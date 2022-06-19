@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <style>
+        .col-25 {
+            -ms-flex: 25%;
+            /* IE10 */
+            flex: 25%;
+        }
+
+        .container {
+            background-color: #f2f2f2;
+            padding: 5px 20px 15px 20px;
+            border: 1px solid lightgrey;
+            border-radius: 3px;
+        }
+
+        label {
+            display: inline-block;
+            float: left;
+            clear: left;
+            width: 250px;
+            text-align: left;
+            /*Change to right here if you want it close to the inputs*/
+        }
+
+        input {
+            display: inline-block;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="jumbotron" style="margin-top: 50px;margin-left: 400px;margin-right: 400px;text-align: center;">
+        <h1>Checkout</h1><br>
+        <h3>Please check your order details before checkout: </h3><br>
+        <!-- <h2>Name: <span id="result_name"></span></h2> -->
+        <div class="form-group row"><label for="name">Name: &nbsp;</label>
+            <span id="result_name"></span>
+        </div><br>
+        <div class="form-group row"><label for="date">Ticket Date: &nbsp;</label>
+            <span id="date"></span>
+        </div><br>
+        <div class="form-group row"><label for="adult_num">Adult (RM100): &nbsp;</label>
+            <span id="adult"></span>
+        </div><br>
+        <div class="form-group row"><label for="child_num">Child (RM70): &nbsp;</label>
+            <span id="child"></span>
+        </div><br>
+        <div class="form-group row"><label for="sc_num">Senior citizen/OKU (RM50): &nbsp;</label>
+            <span id="sc"></span>
+        </div><br>
+        <hr>
+        <p>Total RM&nbsp;<span class="price" id="total_value" style="color:black"><b> </b></span></p><br>
+        <a class="btn btn-primary" role="button" onclick="history.go(-1)">Back to Checkout Page</a>
+        <a class="btn btn-primary" href="#" role="button">Checkout</a>
+    </div>
+
+    <script>
+        function calculateTotal() {
+            let unit_price = {
+                adult: 100,
+                child: 70,
+                sc: 50,
+            };
+            let item_price = {}
+
+            item_price.adult = (document.getElementById('adult').innerHTML * unit_price.adult);
+
+            item_price.child = (document.getElementById('child').innerHTML * unit_price.child)
+
+            item_price.sc = (document.getElementById('sc').innerHTML * unit_price.sc)
+
+            let total = item_price.adult + item_price.child + item_price.sc ;
+
+            $("#total_value").text(total);
+            console.log(total);
+        };
+
+        window.addEventListener('load', () => {
+            const params = (new URL(document.location)).searchParams;
+            const name = params.get('name');
+            const date = params.get('date');
+            const adult = params.get('adult');
+            const child = params.get('child');
+            const sc = params.get('sc');
+
+
+            document.getElementById('result_name').innerHTML = name;
+            document.getElementById('date').innerHTML = date;
+            document.getElementById('adult').innerHTML = adult;
+            document.getElementById('child').innerHTML = child;
+            document.getElementById('sc').innerHTML = sc;
+
+            calculateTotal();
+        })
+    </script>
+</body>
+
+</html>
