@@ -113,9 +113,11 @@
         })
     </script>
 
+<!-- This is the link to communicate the system to the PAYPAL Server by using the special client-id created by the merchant -->
 <script src="https://www.paypal.com/sdk/js?client-id=AeY1HWZeAUqEFsMGsPCkHtXyVsiyne6-kJoXZ0QxYXKjcqBemwVL2BWrJIvX9fDCUqaKqWsuZ420Cu2M&enable-funding=venmo&currency=MYR" data-sdk-integration-source="button-factory"></script>
 <script>
   function initPayPalButton() {
+    //This show the style of the paypal button
     paypal.Buttons({
       style: {
         shape: 'rect',
@@ -124,19 +126,20 @@
         label: 'checkout',
         
       },
-
+      //This is a create order function that fetch the total price of ticket selected and return the price to PAYPAL system in order to checkout
       createOrder: function(data, actions) {
         return actions.order.create({
           purchase_units: [{"description":"Total Price","amount":{"currency_code":"MYR","value":totalValue}}]
         });
       },
 
+      // The order will we capture and order saved
       onApprove: function(data, actions) {
         return actions.order.capture().then(function(orderData) {
           
           // Full available details
           console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-
+          
           // Show a success message within this page, e.g.
           const element = document.getElementById('paypal-button-container');
           element.innerHTML = '';
