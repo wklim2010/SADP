@@ -73,6 +73,7 @@
 
     <script>
         var totalValue=0;
+        //Calculate the total price
         function calculateTotal() {
             let unit_price = {
                 adult: 100,
@@ -94,6 +95,7 @@
             console.log(total);
         };
 
+        //pass the form data from index.html to checkout.html
         window.addEventListener('load', () => {
             const params = (new URL(document.location)).searchParams;
             const name = params.get('name');
