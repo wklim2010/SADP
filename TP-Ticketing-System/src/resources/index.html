@@ -31,24 +31,32 @@
         <h1>Welcome to SAD Park!</h1><br>
         <h3>Please order your tickets here: </h3><br>
         <div class="container">
+            <!--Form for ticket details-->
             <form id="order_form" name="order_form" action="checkout.html" method="get">
+                <!--Buyer name-->
                 <div class="form-group row"><label for="name">Name: &nbsp;</label>
                     <input class="col-sm-4" type="text" id="name" name="name" placeholder="Name">
                 </div><br>
+                <!--Ticket date-->
                 <div class="form-group row"><label for="date">Ticket Date: &nbsp;</label>
                     <input class=" col-sm-4" type="date" id="date" name="date">
                 </div><br>
+                <!--Adult tickets-->
                 <div class="form-group row">
                     <label for="adult_num">Adults (RM100): &nbsp;</label>
+                    <!--Minus 1 button-->
                     <button class="quantity-left-minus btn btn-secondary" type="button" width="16" height="16"
                         onclick="minus(this)">-</button>
+                        <!--Quantity-->
                     <div class="quantity-input">
                         <input type="text" id="quantity" name="adult" class="form-control adult" value="1" min="1"
                             max="100" style="max-width:50px">
                     </div>
+                    <!--Plus 1 button-->
                     <button class="quantity-right-plus btn btn-secondary" type="button" width="16" height="16"
                         onclick="plus(this)">+</button>
                 </div><br>
+                <!--Children tickets-->
                 <div class="form-group row"><label for="child_num">Children (RM70): &nbsp;</label>
                     <button class="quantity-left-minus btn btn-secondary" type="button" width="16" height="16"
                         onclick="minus(this)">-</button>
@@ -59,6 +67,7 @@
                     <button class="quantity-right-plus btn btn-secondary" type="button" width="16" height="16"
                         onclick="plus(this)">+</button>
                 </div><br>
+                <!--Senior citizens/OKU tickets-->
                 <div class="form-group row"><label for="sc_num">Senior citizens/OKU (RM50): &nbsp;</label>
                     <button class="quantity-left-minus btn btn-secondary" type="button" width="16" height="16"
                         onclick="minus(this)">-</button>
@@ -69,17 +78,19 @@
                     <button class="quantity-right-plus btn btn-secondary" type="button" width="16" height="16"
                         onclick="plus(this)">+</button>
                 </div><br>
-                <!-- <button type="button" id="submit" name="submit" class="btn btn-primary">Submit</button> -->
+                <!-- Submit button -->
                     <input type="submit" class="btn btn-primary form-control" id="submit" name="submit" />
             </form>
         </div>
         <script>
+            //Plus 1 function
             function plus(e) {
                 var quantity = e.parentElement.querySelector("#quantity");
                 var count = parseInt(quantity.value);
                 count++;
                 quantity.value = count;
             };
+            //Minus 1 function
             function minus(e) {
                 var quantity = e.parentElement.querySelector("#quantity");
                 var count = parseInt(quantity.value);
