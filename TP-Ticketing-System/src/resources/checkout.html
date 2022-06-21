@@ -60,8 +60,12 @@
         <hr>
         <p>Total RM&nbsp;<span class="price" id="total_value" style="color:black"><b> </b></span></p><br>
         <a class="btn btn-primary" role="button" onclick="history.go(-1)">Back to Checkout Page</a>
-        <a class="btn btn-primary" href="#" role="button">Checkout</a>
+        <br>
+        <br>
+        <div id= "paypal-button-container"> </div>
     </div>
+    
+   
 
     <script>
         function calculateTotal() {
@@ -101,6 +105,28 @@
 
             calculateTotal();
         })
+    </script>
+    <script type = "text/javascript" src="http://www.paypal.com/sdk/js?client-id=AeY1HWZeAUqEFsMGsPCkHtXyVsiyne6-kJoXZ0QxYXKjcqBemwVL2BWrJIvX9fDCUqaKqWsuZ420Cu2M"> </script>
+    <script>
+        paypal.Buttons({
+            createOrder: function (data,actions){
+                return actions.order.create({
+                    intent:'CAPTURE',
+                    payer:{
+                        name:{
+                            given_name:"[[${name}]]",
+                        },
+                    purchase_unit: [{
+                        amount:{
+                            value:"[[${total_value}]]",
+                            currency_code: "MYR"
+                        }
+                    }]
+                    }
+
+                })
+            }
+        }).render("#paypal-button-container");
     </script>
 </body>
 
